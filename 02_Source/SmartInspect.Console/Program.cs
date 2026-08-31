@@ -6,12 +6,13 @@ namespace SmartInspect.Console
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("SmartInspect v0.01");
+            System.Console.WriteLine("SmartInspect v0.05");
             System.Console.WriteLine("System Ready");
 
             int okCount = 0;
 
             List<Product> products = new List<Product>();
+            InspectionProcess process = new InspectionProcess();
 
             for (int i = 0; i < 3; i = i + 1)
             {
@@ -19,7 +20,7 @@ namespace SmartInspect.Console
                 product.SerialNumber = "SN" + (i + 1);
 
                 ReadMeasurement(product);
-                InspectProduct(product);
+                process.InspectProduct(product);
 
                 if (product.Result == "OK")
                 {
@@ -64,18 +65,6 @@ namespace SmartInspect.Console
                 }
 
                 System.Console.WriteLine("输入无效，请输入数字");
-            }
-        }
-
-        static void InspectProduct(Product product)
-        {
-            if (product.Measurement >= 9.5 && product.Measurement <= 10.5)
-            {
-                product.Result = "OK";
-            }
-            else
-            {
-                product.Result = "NG";
             }
         }
 
