@@ -1,0 +1,30 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
+
+# Test and coverage output
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# OS files
+.DS_Store
+Thumbs.db
