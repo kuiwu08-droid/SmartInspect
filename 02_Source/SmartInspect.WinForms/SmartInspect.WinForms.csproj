@@ -1,0 +1,38 @@
+﻿<Project>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartInspect.Communication\SmartInspect.Communication.csproj" />
+    <ProjectReference Include="..\SmartInspect.Core\SmartInspect.Core.csproj" />
+    <ProjectReference Include="..\SmartInspect.Data\SmartInspect.Data.csproj" />
+    <ProjectReference Include="..\SmartInspect.Vision\SmartInspect.Vision.csproj" />
+  </ItemGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <!-- Apply after SDK/user imports so stale designer metadata cannot override these items. -->
+  <ItemGroup>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.Communication.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form1.Vision.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form1.Runtime.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Remove="Form1.Communication.resx;Form1.Vision.resx;Form1.Runtime.resx" />
+  </ItemGroup>
+
+</Project>

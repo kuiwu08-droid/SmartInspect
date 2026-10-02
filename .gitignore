@@ -28,3 +28,17 @@ packages/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local runtime data and credentials (never publish)
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+Logs/
+*.log
+appsettings.json
+.env
+.env.*
+*.pfx
+*.p12
+*.key
