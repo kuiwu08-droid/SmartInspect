@@ -38,6 +38,3 @@ SmartInspect 是 C# / .NET 8 Windows 工业视觉检测学习项目，使用 Win
 - 数据库
 - MES
 
-## 恢复说明
-
-这是灾难恢复后重新生成的 README，只记录已经确认的 SmartInspect v0.05 功能状态。
