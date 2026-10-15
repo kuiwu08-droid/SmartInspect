@@ -1,40 +1,24 @@
 # SmartInspect
 
-SmartInspect 是 C# / .NET 8 Windows 工业视觉检测学习项目，使用 WinForms、OpenCvSharp、SQLite 和 Modbus TCP，支持图片检测、结果记录和模拟 PLC 握手。
+**工业视觉检测桌面程序：图像检测、OK/NG 判定、结果追溯与模拟 PLC 通信。**
 
-## 当前项目入口
+使用 C# / .NET 8、WinForms 和 OpenCvSharp 处理图像，通过 SQLite 保存检测记录，支持批次统计、历史查询和 JSON 参数配置。Modbus TCP 接口将检测结果回传给模拟 PLC。
 
-- 解决方案：[02_Source/SmartInspect.sln](02_Source/SmartInspect.sln)
-- 当前功能与边界：[项目说明](02_Source/README.md)
-- 启动和演示：[演示指南](02_Source/DEMO_GUIDE.md)
-- 模块关系：[架构说明](02_Source/ARCHITECTURE.md)
-- 测试说明：[验证报告](02_Source/Verification/TEST_REPORT.md)
+控制流程采用 Trigger / Busy / Result / Done 握手，处理持续触发、断连、超时和数据库写入失败。验收报告记录了 38 项测试，包含正常检测与异常恢复场景。
 
-使用测试图像及模拟 PLC，不代表真实工业相机或生产设备验收。运行数据、个人配置、凭据及编译输出不上传。
+## 查看项目
 
+- [启动与演示步骤](02_Source/DEMO_GUIDE.md)
+- [功能说明与运行环境](02_Source/README.md)
+- [程序结构](02_Source/ARCHITECTURE.md)
+- [测试报告](02_Source/Verification/TEST_REPORT.md)
+- [Visual Studio 解决方案](02_Source/SmartInspect.sln)
 
-## 已完成
+## 实现内容
 
-- `Product` 单件产品数据模型
-- `List<Product>` 产品集合
-- `SerialNumber`
-- `Measurement`
-- `Result`
-- `ReadMeasurement(Product product)`
-- `InspectProduct(Product product)`
-- `GetFailedCount(int total, int ok)`
-- `CalculateYield(int total, int ok)`
-- 非法输入重试
-- `9.5 <= Measurement <= 10.5` 判定为 `OK`
-- 产品记录输出
-- Total / OK / NG / Yield 汇总统计
+- 图像加载、检测与尺寸上下限判定，输出 OK / NG 结果。
+- 单件记录保存、批次计数、良率统计和历史查询。
+- 模拟 PLC 触发检测、读取状态和接收结果。
+- 参数配置、日志记录、通信超时和异常恢复。
 
-## 尚未实现
-
-- WinForms
-- PLC
-- Halcon
-- 状态机
-- 数据库
-- MES
-
+项目使用测试图像和模拟 PLC，用于验证检测软件及通信流程。运行数据、个人配置、凭据和编译输出不包含在仓库内。
